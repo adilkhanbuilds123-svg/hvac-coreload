@@ -1,0 +1,68 @@
+export const frontmatter = {
+  title: "Duct Losses: The Hidden 30% Tax on Your HVAC System",
+  description: "Duct location, insulation, and leakage can silently destroy 20-40% of your system's capacity before conditioned air ever reaches your rooms.",
+  date: "Oct 15, 2025",
+  category: "Building Science",
+  readTime: "5 min read"
+};
+
+# Duct Losses: The Hidden 30% Tax on Your HVAC System
+
+## Where Your Conditioned Air Actually Goes
+
+You paid for a 3-ton air conditioning system. But if your ducts run through an unconditioned attic in Phoenix, you might only be delivering **2 tons** of cooling to your living space. The rest is heating your attic.
+
+This is not an exaggeration. It is basic thermodynamics.
+
+## The Three Types of Duct Loss
+
+### 1. Conductive Loss (Heat Transfer Through Duct Walls)
+
+Supply air at 55°F traveling through an attic at 140°F creates a temperature differential of **85°F** across the duct wall. Even with R-8 flex duct insulation, significant heat gain occurs over 30+ feet of duct run.
+
+The formula is straightforward:
+```
+Q = U × A × ΔT
+```
+Where:
+- **U** = 1/R-value of the duct insulation
+- **A** = Surface area of the duct (πDL)
+- **ΔT** = Temperature difference between supply air and surrounding space
+
+### 2. Duct Leakage (Air Escaping at Connections)
+
+The average residential duct system leaks **25-40%** of its airflow at joints, boots, and takeoffs. This is conditioned air you paid to heat or cool, now dumped into unconditioned spaces.
+
+Even "well-sealed" ductwork with mastic at every joint still leaks 5-10%. Only aerosol-sealed systems (Aeroseal) approach true zero-leakage.
+
+### 3. Radiant Gain (Solar Loading on Exposed Ducts)
+
+Metal ducts in sun-exposed attics absorb solar radiation directly, adding thermal load that the insulation must then resist. This is why flex duct (with its reflective outer jacket) actually outperforms bare sheet metal in unconditioned attics — despite having lower airflow performance.
+
+## The Location Multiplier
+
+| Duct Location | Capacity Penalty |
+|:---|:---|
+| Conditioned space (inside walls/ceilings) | 0% — ideal |
+| Insulated crawl space | 5-10% |
+| Ventilated crawl space | 10-15% |
+| Unconditioned basement | 10-20% |
+| Unconditioned attic | 20-35% |
+| Uninsulated attic (worst case) | 30-45% |
+
+## What This Means for Equipment Sizing
+
+Manual J requires you to account for duct losses as a direct addition to the building's thermal load. If your block load calculates to 30,000 BTU but your ducts add 25% loss, your actual system requirement is:
+
+```
+30,000 × 1.25 = 37,500 BTU → 3.5 tons instead of 2.5 tons
+```
+
+This is why duct location is one of the most impactful variables in any load calculation — and why moving ducts into conditioned space is often the single best energy retrofit you can make.
+
+## The Fix
+
+1. **Seal first**: Mastic every joint. This is the highest-ROI improvement.
+2. **Insulate**: Minimum R-8 for all ducts in unconditioned spaces.
+3. **Relocate if possible**: Bringing ducts inside the thermal envelope eliminates the problem entirely.
+4. **Calculate accurately**: Use CoreLoad to model your exact duct location and insulation level. The difference between "attic R-4" and "conditioned space" can be a full ton of equipment.
