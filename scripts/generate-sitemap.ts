@@ -1,8 +1,11 @@
 import fs from 'fs';
 import path from 'path';
-import { createRequire } from 'module';
-const require = createRequire(import.meta.url);
-const SITE_CONFIG = require('../src/lib/site-config.json');
+
+// Using ES module imports for the TypeScript data files since we run this via tsx
+import { locations } from '../src/data/seo/locations.ts';
+import { buildingTypes } from '../src/data/seo/buildingTypes.ts';
+import { comparisons } from '../src/data/seo/comparisons.ts';
+import siteConfig from '../src/lib/site-config.json' with { type: 'json' };
 
 console.log('Generating sitemap.xml...');
 
@@ -23,26 +26,7 @@ const blogRoutes = blogFiles.map(file => ({
     path: `/blog/${file.replace('.mdx', '')}`
 }));
 
-// 3. Helper to read TS files without importing them
-function extractArrayFromTS(filePath, arrayName) {
-    const content = fs.existsSync(filePath) ? fs.readFileSync(filePath, 'utf8') : '';
-    const match = content.match(new RegExp(`export const ${arrayName}(?:\\s*:[^=]+)?\\s*=\\s*([\\s\\S]*?);`));
-    if (match && match[1]) {
-        try {
-            return eval(`(${match[1].trim()})`);
-        } catch (e) {
-            console.error(`Failed to parse ${arrayName}`, e);
-            return [];
-        }
-    }
-    return [];
-}
-
-const locations = extractArrayFromTS(path.resolve('src/data/seo/locations.ts'), 'locations');
-const buildingTypes = extractArrayFromTS(path.resolve('src/data/seo/buildingTypes.ts'), 'buildingTypes');
-const comparisons = extractArrayFromTS(path.resolve('src/data/seo/comparisons.ts'), 'comparisons');
-
-// 4. Generate dynamics routes
+// 3. Generate dynamics routes
 const locationRoutes = locations.map(loc => ({
     path: `/load-calculation/${loc.slug}`
 }));
@@ -90,7 +74,7 @@ for (const route of routes) {
     if (route.path.includes('/blog/')) changefreq = 'monthly';
 
     sitemapContent += `  <url>\n`;
-    sitemapContent += `    <loc>${SITE_CONFIG.domain}${route.path}</loc>\n`;
+    sitemapContent += `    <loc>${siteConfig.domain}${route.path}</loc>\n`;
     sitemapContent += `    <lastmod>${today}</lastmod>\n`;
     sitemapContent += `    <changefreq>${changefreq}</changefreq>\n`;
     sitemapContent += `    <priority>${priority}</priority>\n`;
