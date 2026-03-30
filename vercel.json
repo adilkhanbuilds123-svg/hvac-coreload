@@ -7,10 +7,7 @@
             "source": "/sitemap.xml",
             "destination": "/sitemap.xml"
         },
-        {
-            "source": "/feed.xml",
-            "destination": "/feed.xml"
-        },
+
         {
             "source": "/robots.txt",
             "destination": "/robots.txt"
