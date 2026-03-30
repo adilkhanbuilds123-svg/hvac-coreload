@@ -1,5 +1,5 @@
 {
-    "buildCommand": "tsc -b && vite build && npx tsx scripts/generate-sitemap.ts",
+    "buildCommand": "tsc -b && vite build && node scripts/prerender.mjs",
     "outputDirectory": "dist",
     "installCommand": "npm install --legacy-peer-deps",
     "rewrites": [
