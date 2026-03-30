@@ -42,7 +42,7 @@ function generateRssFeed(): Plugin {
       
       this.emitFile({
         type: 'asset',
-        fileName: 'feed.xml',
+        fileName: 'rss.xml',
         source: rssContent
       })
     }

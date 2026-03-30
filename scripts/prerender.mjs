@@ -260,8 +260,8 @@ async function runPrerender() {
         }
 
         rssContent += `</channel>\n</rss>`;
-        fs.writeFileSync(path.join(distDir, 'feed.xml'), rssContent, 'utf8');
-        console.log('Generated feed.xml (RSS)');
+        fs.writeFileSync(path.join(distDir, 'rss.xml'), rssContent, 'utf8');
+        console.log('Generated rss.xml (RSS)');
         
         console.log('Prerendering completed successfully.');
         process.exit(0);

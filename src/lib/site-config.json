@@ -5,5 +5,5 @@
   "description": "Free online HVAC load calculator inspired by ACCA Manual J. Estimate heating and cooling BTU loads, AC tonnage sizing, and infiltration rates.",
   "author": "CoreLoad Software",
   "ogImage": "/og-image.png",
-  "rssFeed": "/feed.xml"
+  "rssFeed": "/rss.xml"
 }

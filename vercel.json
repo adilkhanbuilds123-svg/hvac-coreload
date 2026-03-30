@@ -5,8 +5,8 @@
     "installCommand": "npm install --legacy-peer-deps",
     "rewrites": [
         {
-            "source": "/feed.xml",
-            "destination": "/feed.xml"
+            "source": "/rss.xml",
+            "destination": "/rss.xml"
         },
         {
             "source": "/sitemap.xml",
@@ -37,7 +37,7 @@
             ]
         },
         {
-            "source": "/feed.xml",
+            "source": "/rss.xml",
             "headers": [
                 {
                     "key": "Content-Type",
