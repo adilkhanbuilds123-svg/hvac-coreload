@@ -18,7 +18,7 @@
             "destination": "/robots.txt"
         },
         {
-            "source": "/(.*)",
+            "source": "/((?!sitemap\\.xml|feed\\.xml|robots\\.txt|assets/|.*\\.(?:js|css|woff2|woff|ttf|eot|ico|svg|png|jpg|jpeg|webp|avif)).*)",
             "destination": "/index.html"
         }
     ],
