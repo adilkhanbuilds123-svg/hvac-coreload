@@ -5,6 +5,10 @@
     "installCommand": "npm install --legacy-peer-deps",
     "rewrites": [
         {
+            "source": "/rss.xml",
+            "destination": "/api/rss"
+        },
+        {
             "source": "/((?!.*\\.).*)",
             "destination": "/index.html"
         }
