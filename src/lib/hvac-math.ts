@@ -141,7 +141,7 @@ export function calculateLatentInfiltration(
 // ── Helpers ──────────────────────────────────────────────────────────
 
 export function rValueToUValue(rValue: number): number {
-    return 1 / rValue;
+    return 1 / Math.max(rValue, 0.01);
 }
 
 export function btuToTonnage(btu: number): number {
@@ -259,7 +259,7 @@ export function calculateTotalLoad(inputs: HVACInputs): HVACResults {
 
     // Altitude Correction (Air Density)
     // Standard Barometric Formula: (1 - 0.000006875 * elevation)^5.2559
-    const densityMultiplier = Math.max(0.7, Math.pow(1 - (0.000006875 * i.elevation), 5.2559));
+    const densityMultiplier = Math.max(0.65, Math.pow(1 - (0.000006875 * i.elevation), 5.2559));
 
     const wallU = rValueToUValue(WALL_R_VALUES[i.wallInsulation]);
     const roofU = rValueToUValue(ROOF_R_VALUES[i.roofInsulation]);
@@ -393,31 +393,34 @@ export function calculateTotalLoad(inputs: HVACInputs): HVACResults {
     // SHR = Sensible / Total
     const sensibleHeatRatio = Number((totalSensibleCooling / coolingBTU).toFixed(2));
 
+    // Guard all output values against NaN/Infinity
+    const sf = (v: number): number => (Number.isFinite(v) ? v : 0);
+
     return {
-        heatingBTU,
-        coolingBTU,
-        totalBTU,
-        tonnage,
-        wallArea: Math.round(wallArea),
-        volume: Math.round(volume),
-        wallHeatLoss: Math.round(wallHeatLoss),
-        roofHeatLoss: Math.round(roofHeatLoss),
-        windowHeatLoss: Math.round(windowHeatLoss),
-        wallHeatGain: Math.round(wallHeatGain),
-        roofHeatGain: Math.round(roofHeatGain),
-        windowHeatGain: Math.round(windowHeatGain),
-        infiltrationHeating: Math.round(infiltrationHeating),
-        infiltrationCoolingSensible: Math.round(infiltrationCoolingSensible),
-        infiltrationCoolingLatent: Math.round(infiltrationCoolingLatent),
-        internalSensible: Math.round(internalSensible),
-        internalLatent: Math.round(internalLatent),
-        ductLossHeating: Math.round(ductLossHeating),
-        ductLossCoolingSensible: Math.round(ductLossCoolingSensible),
-        ductLossCoolingLatent: Math.round(ductLossCoolingLatent),
-        floorLoss: Math.round(floorLoss),
-        floorGain: Math.round(floorGain),
-        totalSensibleCooling,
-        totalLatentCooling,
-        sensibleHeatRatio,
+        heatingBTU: sf(heatingBTU),
+        coolingBTU: sf(coolingBTU),
+        totalBTU: sf(totalBTU),
+        tonnage: sf(tonnage),
+        wallArea: sf(Math.round(wallArea)),
+        volume: sf(Math.round(volume)),
+        wallHeatLoss: sf(Math.round(wallHeatLoss)),
+        roofHeatLoss: sf(Math.round(roofHeatLoss)),
+        windowHeatLoss: sf(Math.round(windowHeatLoss)),
+        wallHeatGain: sf(Math.round(wallHeatGain)),
+        roofHeatGain: sf(Math.round(roofHeatGain)),
+        windowHeatGain: sf(Math.round(windowHeatGain)),
+        infiltrationHeating: sf(Math.round(infiltrationHeating)),
+        infiltrationCoolingSensible: sf(Math.round(infiltrationCoolingSensible)),
+        infiltrationCoolingLatent: sf(Math.round(infiltrationCoolingLatent)),
+        internalSensible: sf(Math.round(internalSensible)),
+        internalLatent: sf(Math.round(internalLatent)),
+        ductLossHeating: sf(Math.round(ductLossHeating)),
+        ductLossCoolingSensible: sf(Math.round(ductLossCoolingSensible)),
+        ductLossCoolingLatent: sf(Math.round(ductLossCoolingLatent)),
+        floorLoss: sf(Math.round(floorLoss)),
+        floorGain: sf(Math.round(floorGain)),
+        totalSensibleCooling: sf(totalSensibleCooling),
+        totalLatentCooling: sf(totalLatentCooling),
+        sensibleHeatRatio: sf(sensibleHeatRatio),
     };
 }

@@ -1,0 +1,156 @@
+/* ══════════════════════════════════════════════════════════════════
+   CoreLoad — Dark Industrial Console Design System
+   ══════════════════════════════════════════════════════════════════ */
+
+@import "tailwindcss";
+
+/* ── Tailwind v4 Theme Tokens ─────────────────────────────────── */
+@theme {
+  --color-canvas-primary: #030303;
+  --color-canvas-card: #09090b;
+  --color-cyan-cooling: #06b6d4;
+  --color-orange-heating: #f97316;
+  --color-glow-accent: #fbbf24;
+  --color-border-subtle: rgba(255, 255, 255, 0.06);
+  --color-border-active: rgba(6, 182, 212, 0.3);
+
+  --font-display: 'Cabinet Grotesk', system-ui, sans-serif;
+  --font-body: 'Satoshi', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+/* ── CSS Custom Properties ────────────────────────────────────── */
+:root {
+  --canvas-primary: #030303;
+  --canvas-card: #09090b;
+  --cyan-cooling: #06b6d4;
+  --orange-heating: #f97316;
+  --glow-accent: #fbbf24;
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(255, 255, 255, 0.2);
+}
+
+/* ── Base Styles ──────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--canvas-primary);
+  color: #a1a1aa;
+  font-family: var(--font-body);
+  line-height: 1.6;
+}
+
+/* ── Selection ────────────────────────────────────────────────── */
+::selection {
+  background: rgba(6, 182, 212, 0.3);
+  color: #e4e4e7;
+}
+
+/* ── Scrollbar ────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #09090b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #27272a #09090b;
+}
+
+/* ── Typography Classes ───────────────────────────────────────── */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* ── Bento Grid System ────────────────────────────────────────── */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-auto-flow: dense;
+  gap: 1px;
+  background: var(--border-subtle);
+}
+
+.bento-cell {
+  background: var(--canvas-card);
+  padding: 1.5rem;
+}
+
+.bento-cell--wide {
+  grid-column: span 2;
+}
+
+.bento-cell--tall {
+  grid-row: span 2;
+}
+
+/* ── Input Controls ───────────────────────────────────────────── */
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  background: #27272a;
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+  border: 1px solid #000;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  transition: transform 0.1s ease;
+}
+
+input[type='range']::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+input[type='range']::-webkit-slider-thumb:active {
+  transform: scale(0.95);
+}
+
+input[type='range']::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+  border: 1px solid #000;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+
