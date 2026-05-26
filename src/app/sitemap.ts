@@ -2,7 +2,9 @@ import { MetadataRoute } from 'next';
 import { articles } from '@/data/blog-articles';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://coreload.app'; // Replace with actual domain when deploying
+  const baseUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL 
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` 
+    : (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://coreload.app');
 
   // Base routes
   const routes = ['', '/calculator', '/projects', '/reports', '/blog'].map(
