@@ -17,7 +17,7 @@ const nextConfig: NextConfig = {
 
   // Experimental Features
   experimental: {
-    ppr: 'incremental',
+    cacheComponents: true,
   },
 
   // Strict React mode
