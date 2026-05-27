@@ -3,13 +3,21 @@ import './globals.css';
 import { Navigation } from '@/components/layout/Navigation';
 
 export const metadata: Metadata = {
-  title: 'CoreLoad | HVAC Load Calculator',
+  metadataBase: new URL(
+    process.env.VERCEL_PROJECT_PRODUCTION_URL 
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` 
+      : 'https://coreload.app'
+  ),
+  title: 'CoreLoad | Free HVAC Load Calculator & ACCA Manual J Sizing',
   description:
-    'Professional HVAC load calculation using ACCA Manual J methodology. Calculate heating and cooling loads for residential buildings with precision engineering.',
+    'Professional HVAC load calculation tool using ACCA Manual J block load methodology. Accurately size heating and cooling systems, heat pumps, and AC units for residential buildings.',
+  keywords: ['HVAC load calculator', 'Manual J calculation', 'AC sizing', 'heat pump sizing', 'BTU calculator', 'residential HVAC'],
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     title: 'CoreLoad | HVAC Load Calculator',
-    description:
-      'Professional HVAC load calculation using ACCA Manual J methodology.',
+    description: 'Professional HVAC load calculation using ACCA Manual J methodology.',
     type: 'website',
   },
 };
