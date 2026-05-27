@@ -15,6 +15,11 @@ const nextConfig: NextConfig = {
     remotePatterns: [],
   },
 
+  // Experimental Features
+  experimental: {
+    ppr: 'incremental',
+  },
+
   // Strict React mode
   reactStrictMode: true,
 
