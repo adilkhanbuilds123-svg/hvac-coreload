@@ -38,6 +38,31 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
       </head>
       <body className="bg-canvas-primary text-zinc-400 antialiased min-h-screen font-body">
+        {/* JSON-LD Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "WebSite",
+                  "@id": "https://coreload.app/#website",
+                  "url": "https://coreload.app/",
+                  "name": "CoreLoad",
+                  "description": "Professional HVAC load calculation tool using ACCA Manual J block load methodology."
+                },
+                {
+                  "@type": "Organization",
+                  "@id": "https://coreload.app/#organization",
+                  "name": "CoreLoad Engineering",
+                  "url": "https://coreload.app/",
+                  "logo": "https://coreload.app/icon.svg"
+                }
+              ]
+            })
+          }}
+        />
         <Navigation />
         <main className="pt-14">{children}</main>
       </body>

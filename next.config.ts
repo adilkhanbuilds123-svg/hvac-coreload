@@ -72,9 +72,9 @@ const nextConfig: NextConfig = {
     ];
   },
 
-  // Cache headers for API routes
+  // Cache headers and SEO robots headers
   async headers() {
-    return [
+    const headersList = [
       {
         source: '/api/weather',
         headers: [
@@ -85,6 +85,21 @@ const nextConfig: NextConfig = {
         ],
       },
     ];
+
+    // Explicitly add X-Robots-Tag noindex for Vercel preview/dev environments
+    if (process.env.VERCEL_ENV !== 'production') {
+      headersList.push({
+        source: '/:path*',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex, nofollow',
+          },
+        ],
+      });
+    }
+
+    return headersList;
   },
 };
 
