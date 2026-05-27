@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://coreload-hvac.vercel.app/sitemap.xml
